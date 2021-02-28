@@ -1,0 +1,528 @@
+{
+	"info": {
+		"_postman_id": "8a7af8e7-73f0-40fb-ac4f-8ba7b638d7c5",
+		"name": "Pets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Pet Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"petGuid\", jsonData.item.petId);",
+							"});",
+							"pm.test(\"Item has created\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.item.petId).exist",
+							"});",
+							"",
+							"postman.setNextRequest(\"List Pets Task\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Testando lo e envio de email\",\n    \"dueDate\": \"2021-03-07T16:06:03.556Z\",\n    \"createdAt\": \"2021-02-28T16:06:03.556Z\",\n    \"done\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{address}}/dev/pets",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"dev",
+						"pets"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CreatePet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Testando lo e envio de email\",\n    \"dueDate\": \"2021-03-07T16:06:03.556Z\",\n    \"createdAt\": \"2021-02-28T16:06:03.556Z\",\n    \"done\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{address}}/dev/pets",
+							"host": [
+								"{{address}}"
+							],
+							"path": [
+								"dev",
+								"pets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "vary",
+							"value": "origin"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "WWW-Authenticate,Server-Authorization"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache"
+						},
+						{
+							"key": "content-length",
+							"value": "230"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Feb 2021 19:25:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"item\": {\n        \"petId\": \"d69c2ad9-461d-4e6f-99a2-da913e00b4db\",\n        \"userId\": \"0001\",\n        \"done\": false,\n        \"name\": \"Testando lo e envio de email\",\n        \"email\": \"cardososp@gmail.com\",\n        \"createdAt\": \"2021-02-28T19:25:19.880Z\",\n        \"dueDate\": \"2021-02-28T19:25:19.880Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "List Pets Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"List greater than 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.items.length).greaterThan(0)",
+							"});",
+							"",
+							"postman.setNextRequest(\"Pet Add Attachment\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/dev/pets",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"dev",
+						"pets"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CreatePet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Testando lo e envio de email\",\n    \"dueDate\": \"2021-03-07T16:06:03.556Z\",\n    \"createdAt\": \"2021-02-28T16:06:03.556Z\",\n    \"done\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{address}}/dev/pets",
+							"host": [
+								"{{address}}"
+							],
+							"path": [
+								"dev",
+								"pets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "vary",
+							"value": "origin"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "WWW-Authenticate,Server-Authorization"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache"
+						},
+						{
+							"key": "content-length",
+							"value": "230"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Feb 2021 19:25:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"item\": {\n        \"petId\": \"d69c2ad9-461d-4e6f-99a2-da913e00b4db\",\n        \"userId\": \"0001\",\n        \"done\": false,\n        \"name\": \"Testando lo e envio de email\",\n        \"email\": \"cardososp@gmail.com\",\n        \"createdAt\": \"2021-02-28T19:25:19.880Z\",\n        \"dueDate\": \"2021-02-28T19:25:19.880Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Pet Add Attachment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Received uploadUrl\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.uploadUrl).exist",
+							"});",
+							"",
+							"",
+							"postman.setNextRequest(\"Delete Pet Task\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/dev/pets/{{petGuid}}/attachment",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"dev",
+						"pets",
+						"{{petGuid}}",
+						"attachment"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CreatePet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Testando lo e envio de email\",\n    \"dueDate\": \"2021-03-07T16:06:03.556Z\",\n    \"createdAt\": \"2021-02-28T16:06:03.556Z\",\n    \"done\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{address}}/dev/pets",
+							"host": [
+								"{{address}}"
+							],
+							"path": [
+								"dev",
+								"pets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "vary",
+							"value": "origin"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "WWW-Authenticate,Server-Authorization"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache"
+						},
+						{
+							"key": "content-length",
+							"value": "230"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Feb 2021 19:25:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"item\": {\n        \"petId\": \"d69c2ad9-461d-4e6f-99a2-da913e00b4db\",\n        \"userId\": \"0001\",\n        \"done\": false,\n        \"name\": \"Testando lo e envio de email\",\n        \"email\": \"cardososp@gmail.com\",\n        \"createdAt\": \"2021-02-28T19:25:19.880Z\",\n        \"dueDate\": \"2021-02-28T19:25:19.880Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Complete Pet Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"postman.setNextRequest(\"Complete Pet Task\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Testando lo e envio de email\",\n    \"dueDate\": \"2021-02-28T18:18:52.993Z\",\n    \"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{address}}/dev/pets/{{petGuid}}",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"dev",
+						"pets",
+						"{{petGuid}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CreatePet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Testando lo e envio de email\",\n    \"dueDate\": \"2021-03-07T16:06:03.556Z\",\n    \"createdAt\": \"2021-02-28T16:06:03.556Z\",\n    \"done\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{address}}/dev/pets",
+							"host": [
+								"{{address}}"
+							],
+							"path": [
+								"dev",
+								"pets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "vary",
+							"value": "origin"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "WWW-Authenticate,Server-Authorization"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache"
+						},
+						{
+							"key": "content-length",
+							"value": "230"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Feb 2021 19:25:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"item\": {\n        \"petId\": \"d69c2ad9-461d-4e6f-99a2-da913e00b4db\",\n        \"userId\": \"0001\",\n        \"done\": false,\n        \"name\": \"Testando lo e envio de email\",\n        \"email\": \"cardososp@gmail.com\",\n        \"createdAt\": \"2021-02-28T19:25:19.880Z\",\n        \"dueDate\": \"2021-02-28T19:25:19.880Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Pet Task",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{address}}/dev/pets/{{petGuid}}",
+					"host": [
+						"{{address}}"
+					],
+					"path": [
+						"dev",
+						"pets",
+						"{{petGuid}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "CreatePet",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Testando lo e envio de email\",\n    \"dueDate\": \"2021-03-07T16:06:03.556Z\",\n    \"createdAt\": \"2021-02-28T16:06:03.556Z\",\n    \"done\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{address}}/dev/pets",
+							"host": [
+								"{{address}}"
+							],
+							"path": [
+								"dev",
+								"pets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "vary",
+							"value": "origin"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "WWW-Authenticate,Server-Authorization"
+						},
+						{
+							"key": "cache-control",
+							"value": "no-cache"
+						},
+						{
+							"key": "content-length",
+							"value": "230"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Feb 2021 19:25:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"item\": {\n        \"petId\": \"d69c2ad9-461d-4e6f-99a2-da913e00b4db\",\n        \"userId\": \"0001\",\n        \"done\": false,\n        \"name\": \"Testando lo e envio de email\",\n        \"email\": \"cardososp@gmail.com\",\n        \"createdAt\": \"2021-02-28T19:25:19.880Z\",\n        \"dueDate\": \"2021-02-28T19:25:19.880Z\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
