@@ -1,5 +1,7 @@
 # Cloud Scafolding Backend
 
+[![CI](https://github.com/novasdream/cloud_scafolding_serveless_aws/actions/workflows/main.yml/badge.svg)](https://github.com/novasdream/cloud_scafolding_serveless_aws/actions/workflows/main.yml)
+
 This project are using Serverless with AWS.
 
 ## Configuration
