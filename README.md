@@ -39,6 +39,23 @@ Set your `domain` and `clientId`. Tip: You will use same as in auth0
 
 After deploy the lambda backend you only will need  configure `apiId` in config file.
 
+## Running Locally
+
+### Frontend
+
+You can install based on lock version using ```npm ci```
+You can run it u sing ```npm run start```
+
+by Default you it will open you ```http://localhost:3000/```
+
+### Backend
+
+at first you need to install severless (2.23.0)
+
+Second step you will need to run dynamodb on local ```sls dynamodb start```
+Last step you will need to start serverless offline using ```sls offline``` 
+
+
 
 # More details 
 
