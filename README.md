@@ -28,9 +28,11 @@ Here you can define your table name for details, s3 folders, and not for securit
 When you create your secret you must use the name `auth0Secret`
 
 Value of `auth0Secret` if you use auth0 you can set in 
+
 `Application Details` -> `Show Advanced Settings` -> `Certificates` -> `Signing Certificate`
 
 Also in `auth0` you need configure 
+
 `Allowed Callback URLs` and `Allowed Logout URLs`
 
 After you configure your `auth0` you need to configure our frontend to work has expected, go to `./frontend/src/config.ts` 
@@ -44,15 +46,17 @@ After deploy the lambda backend you only will need  configure `apiId` in config 
 ### Frontend
 
 You can install based on lock version using ```npm ci```
+
 You can run it u sing ```npm run start```
 
 by Default you it will open you ```http://localhost:3000/```
 
 ### Backend
 
-at first you need to install severless (2.23.0)
+At first you need to install severless (2.23.0)
 
 Second step you will need to run dynamodb on local ```sls dynamodb start```
+
 Last step you will need to start serverless offline using ```sls offline``` 
 
 
