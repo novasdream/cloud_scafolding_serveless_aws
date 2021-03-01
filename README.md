@@ -5,7 +5,7 @@ This project are using Serverless with AWS.
 ## Configuration
 
 Backend configuration is based in details
-serverless.ts
+`serverless.ts
 
 ```typescript
 
