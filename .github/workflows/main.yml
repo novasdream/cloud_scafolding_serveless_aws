@@ -54,3 +54,4 @@ jobs:
           working-directory: ./backend
         - name: Deploy Lambda functions
           run: npx sls deploy -s dev
+          working-directory: ./backend
